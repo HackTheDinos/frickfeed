@@ -5,4 +5,6 @@
 
 `mkvirtualenv frickfeed`
 
+`workon frickfeed`
+
 `pip install -r requirements/base.txt`
