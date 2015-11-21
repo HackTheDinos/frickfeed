@@ -17,7 +17,7 @@
 ```
 createuser -s postgres
 psql -U postgres
-CREATE DATABSE frickdb;
+CREATE DATABASE frickdb;
 CREATE USER frick WITH PASSWORD 'frickpass';
 GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 \q
