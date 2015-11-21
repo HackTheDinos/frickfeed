@@ -8,3 +8,5 @@
 `workon frickfeed`
 
 `pip install -r requirements/base.txt`
+
+`export DJANGO_SETTINGS_MODULE=frickfeed.settings.base`
