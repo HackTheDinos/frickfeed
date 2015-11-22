@@ -15,7 +15,13 @@ class RecordListSerializer(ModelSerializer):
         fields = [
             'id',
             'location',
-            'collector_name']
+            'box',
+            'shipping_point',
+            'collector_name',
+            'date_recorded',
+            'date',
+            'season_at'
+            ]
 
 class SpecimenSerializer(ModelSerializer):
 
