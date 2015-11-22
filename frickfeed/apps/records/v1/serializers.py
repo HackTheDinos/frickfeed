@@ -8,7 +8,7 @@ class RecordSerializer(ModelSerializer):
         model = Record
 
 
-class Specimen(ModelSerializer):
+class SpecimenSerializer(ModelSerializer):
 
     class Meta:
         model = Specimen
