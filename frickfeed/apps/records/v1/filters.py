@@ -2,6 +2,11 @@ import django_filters
 from apps.records.models import Record, Specimen
 
 class RecordFilter(django_filters.FilterSet):
+    min_date = django_filters.DateTimeFilter(name='date',lookup_type='gte')
+    max_date = django_filters.DateTimeFilter(name='date',lookup_type='lte')
+    min_date_recorded = django_filters.DateTimeFilter(name='date_recorded',lookup_type='gte')
+    max_date_recorded = django_filters.DateTimeFilter(name='date_recorded',lookup_type='lte')
+
     class Meta:
         model = Record
         fields = {
@@ -10,7 +15,7 @@ class RecordFilter(django_filters.FilterSet):
             'collector_name_last': ['icontains'],
             'season_at': ['icontains'],
             'date_recorded': ['exact'],
-            'date': ['exact']
+            'date': ['exact'],
         }
 
 
