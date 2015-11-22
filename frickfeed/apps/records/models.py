@@ -13,7 +13,7 @@ class Record(TimeStampedModel):
     shipping_point = models.CharField(max_length=100)
     collector_name_first = models.CharField(max_length=50)
     collector_name_last = models.CharField(max_length=50)
-    date_recorded = models.DateField()
+    date_recorded = models.DateField(blank=True, null=True)
     date = models.DateField()
     season_at = models.CharField(max_length=50)
 
