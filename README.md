@@ -44,4 +44,8 @@ Follow the prompts:
 ## Run the frick out of our scripts
 `python manage.py migrate`
 
+`python manage.py loaddata dummy_data.json`
+`python manage.py loaddata auth_sites.json`
+`python manage.py loaddata auth_social_accounts.json`
+
 `./manage.py runserver`
