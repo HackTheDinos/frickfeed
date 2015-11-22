@@ -22,7 +22,7 @@ class Record(TimeStampedModel):
         unique_together = ('frick_n_location','frick_n_box')
 
     def __unicode__(self):
-        return u'{}-{}'.(self.frick_n_location, self.frick_n_box
+        return u'{}-{}'.format(self.frick_n_location, self.frick_n_box)
 
 
 class Specimen(TimeStampedModel):
@@ -47,4 +47,4 @@ class Specimen(TimeStampedModel):
         unique_together = ('record', 'frick_n_specimen')
 
     def __unicode__(self):
-        return u'{}-{}'.(self.record, self.frick_n_specimen)
+        return u'{}-{}'.format(self.record, self.frick_n_specimen)
