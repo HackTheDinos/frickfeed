@@ -7,7 +7,7 @@ class Record(TimeStampedModel):
     Represents a record or a page in the frick collection
     '''
 
-    frick_n_location = models.CharField()
+    frick_n_location = models.CharField(max_length=10)
     frick_n_box = models.IntegerField()
 
     shipping_point = models.CharField() # or break into city, state
