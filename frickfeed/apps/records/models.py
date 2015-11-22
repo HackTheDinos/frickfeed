@@ -24,6 +24,10 @@ class Record(TimeStampedModel):
     def __unicode__(self):
         return u'{}-{}'.format(self.location, self.box)
 
+    @property
+    def collector_name(self):
+        return '{}, {}'.format(self.collector_name_last, self.collector_name_first)
+
 
 class Specimen(TimeStampedModel):
     '''
@@ -46,3 +50,11 @@ class Specimen(TimeStampedModel):
 
     def __unicode__(self):
         return u'{}-{}'.format(self.record, self.specimen)
+
+    @property
+    def amnh_catalog(self):
+        return '{} {}'.format(self.amnh_catalog_a, self.amnh_catalog_b)
+
+    @property
+    def frick_number(self):
+        return '{}-{}-{}'.format(self.record.location, self.record.box, self.field_no)

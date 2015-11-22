@@ -1,5 +1,5 @@
 import django_filters
-from apps.records import Record, Specimen
+from apps.records.models import Record, Specimen
 
 class RecordFilter(django_filters.FilterSet):
     class Meta:
@@ -15,9 +15,9 @@ class RecordFilter(django_filters.FilterSet):
 
 
 class SpecimenFilter(django_filters.FilterSet):
-	class Meta:
+    class Meta:
         model = Specimen
         fields = {
-        	'description': ['icontains'],
-        	'location': ['icontains']
+            'description': ['icontains'],
+            'location': ['icontains']
         }
