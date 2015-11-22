@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django_extensions',
 
     # Frick apps
+    'apps.records',
 )
 
 MIDDLEWARE_CLASSES = (
