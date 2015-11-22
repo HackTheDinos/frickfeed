@@ -1,5 +1,9 @@
 # FrickFeed
 
+## Dependencies
+* postgresql 
+* python2.7.*
+
 ## Setup Python and Django
 `git clone git@github.com:HackTheDinos/frickfeed.git`
 
@@ -24,5 +28,5 @@ GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 ```
 
 ## Run the frick out of our scripts
-
+`python manage.py migrate`
 `./manage.py runserver`
