@@ -7,8 +7,8 @@ class Record(TimeStampedModel):
     Represents a record or a page in the frick collection
     '''
 
-    frick_n_location = models.CharField(max_length=10, null=False, blank=False)
-    frick_n_box = models.IntegerField(null=False, blank=False)
+    location = models.CharField(max_length=10, null=False, blank=False)
+    box = models.IntegerField(null=False, blank=False)
 
     shipping_point = models.CharField(max_length=50)
     collector_name_first = models.CharField(max_length=50)
@@ -22,7 +22,7 @@ class Record(TimeStampedModel):
         unique_together = ('frick_n_location','frick_n_box')
 
     def __unicode__(self):
-        return u'{}-{}'.format(self.frick_n_location, self.frick_n_box)
+        return u'{}-{}'.format(self.location, self.box)
 
 
 class Specimen(TimeStampedModel):
@@ -32,13 +32,11 @@ class Specimen(TimeStampedModel):
 
     record = models.ForeignKey('Record', related_name='specimen')
 
-    field_no = models.IntegerField(blank=False)
-
     #EG FAM 42326
     amnh_catalog_a = models.CharField(max_length=10) # where does this come from?
     amnh_catalog_b = models.CharField(max_length=10) # where does this come from?
 
-    frick_n_specimen = models.IntegerField()
+    field_no = models.IntegerField()
     description = models.CharField(max_length=200) # or break this up into the components by semicolon?
     location = models.CharField(max_length=50, null=True)
 
@@ -47,4 +45,4 @@ class Specimen(TimeStampedModel):
         unique_together = ('record', 'frick_n_specimen')
 
     def __unicode__(self):
-        return u'{}-{}'.format(self.record, self.frick_n_specimen)
+        return u'{}-{}'.format(self.record, self.specimen)
