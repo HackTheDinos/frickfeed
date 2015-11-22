@@ -30,6 +30,7 @@ GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 `./manage.py createsuperuser`
 
 Follow the prompts:
+
 > Username (leave blank to use 'gregthompson'): frick
 > Email address: 
 > Password: frickpassword
