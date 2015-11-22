@@ -1,10 +1,22 @@
 {% load staticfiles %}
+
+<!doctype html>
 <html>
   <head>
     <title>{% block title %}{% endblock %}| FrickFeed</title>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="import" href="static/bower_components/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="static/bower_components/paper-menu/paper-menu.html">
+    <script src="static/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <header>
+      <paper-toolbar>
+        <div class="title">FrickFeed</div>
+      </paper-toolbar>
+    </header>
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
