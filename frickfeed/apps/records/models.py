@@ -10,12 +10,12 @@ class Record(TimeStampedModel):
     location = models.CharField(max_length=10, null=False, blank=False)
     box = models.IntegerField(null=False, blank=False)
 
-    shipping_point = models.CharField(max_length=100)
-    collector_name_first = models.CharField(max_length=50)
-    collector_name_last = models.CharField(max_length=50)
+    shipping_point = models.CharField(max_length=100, blank=True, null=True)
+    collector_name_first = models.CharField(max_length=50, blank=True, null=True)
+    collector_name_last = models.CharField(max_length=50, blank=True, null=True)
     date_recorded = models.DateField(blank=True, null=True)
-    date = models.DateField()
-    season_at = models.CharField(max_length=50)
+    date = models.DateField(blank=True, null=True)
+    season_at = models.CharField(max_length=50, blank=True, null=True)
 
     transcriber = models.ForeignKey('socialaccount.socialaccount', blank=True, null=True)
 
