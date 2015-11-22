@@ -20,7 +20,8 @@ class RecordListSerializer(ModelSerializer):
             'collector_name',
             'date_recorded',
             'date',
-            'season_at'
+            'season_at',
+            'transcriber_name'
             ]
 
 class SpecimenSerializer(ModelSerializer):

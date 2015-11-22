@@ -17,6 +17,8 @@ class Record(TimeStampedModel):
     date = models.DateField()
     season_at = models.CharField(max_length=50)
 
+    transcriber = models.ForeignKey('socialaccount.socialaccount', blank=True, null=True)
+
     class Meta:
         db_table = 'record'
         unique_together = ('location','box')
@@ -28,6 +30,9 @@ class Record(TimeStampedModel):
     def collector_name(self):
         return '{}, {}'.format(self.collector_name_last, self.collector_name_first)
 
+    @property
+    def transcriber_name(self):
+        return u'{}'.format(self.transcriber.extra_data.get('name'))
 
 class Specimen(TimeStampedModel):
     '''
