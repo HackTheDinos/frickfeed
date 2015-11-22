@@ -2,8 +2,10 @@
 
 {% block content %}
 
+  {% comment "Optional note" %}
+  {% include 'feed.html' %}
+  {% endcomment %}
+
   {% include 'transcribe_form.html' %}
 
 {% endblock %}
-
-
