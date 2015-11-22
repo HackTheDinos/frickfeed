@@ -5,7 +5,32 @@
   <head>
     <title>{% block title %}{% endblock %}| FrickFeed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Default Styles -->
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .content {
+        padding: 10px;
+      }
+
+      h2 {
+        padding: 5px;
+        line-height: 1em;
+        font-size: 16px;
+        font-weight: normal;
+        color: #777;
+      }
+    </style>
+
+    <!-- Polymer Imports -->
     <link rel="import" href="static/bower_components/paper-toolbar/paper-toolbar.html" />
+    <link rel="import" href="static/bower_components/paper-icon-button/paper-icon-button.html" />
+    <link rel="import" href="static/bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="static/bower_components/paper-menu/paper-menu.html" />
     <script src="static/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
@@ -16,28 +41,34 @@
     <script src="static/js/lib/leaflet.js"></script>
     <style>
       .shippingRecord {
-        height: 180px;
+        height: 250px;
       }
     </style>
-    <!-- End Leaflet for Image Viewer -->
   </head>
 
   <body>
     <!-- Header -->
     <header>
-      <paper-toolbar>
+      <paper-toolbar paper-toolbar-color="#000">
+        <paper-icon-button icon="menu" style="color: white;"></paper-icon-button>
         <div class="title">FrickFeed</div>
       </paper-toolbar>
     </header>
 
     <!-- Content -->
-    <div id="content">
+    <div id="content" class="content">
 
       {% block content %}{% endblock %}
 
     </div>
 
+    <!-- Menu -->
+    <paper-menu>
+
+    </paper-menu>
+
     <!-- Scripts -->
+    <script src="static/js/lib/jquery-2.1.4.min.js"></script>
     <script src="static/js/image_viewer.js"></script>
   </body>
 </html>
