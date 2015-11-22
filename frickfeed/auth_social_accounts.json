@@ -1,0 +1,16 @@
+[
+{
+  "fields": {
+    "name": "frickfeed",
+    "sites": [
+      2
+    ],
+    "secret": "ab31301bcf70ee277c5ed809afcebff9",
+    "client_id": "426985067506860",
+    "key": "",
+    "provider": "facebook"
+  },
+  "model": "socialaccount.socialapp",
+  "pk": 1
+}
+]
