@@ -13,7 +13,7 @@ class Record(TimeStampedModel):
     shipping_point = models.CharField(max_length=100)
     collector_name_first = models.CharField(max_length=50)
     collector_name_last = models.CharField(max_length=50)
-    date_recorded = models.DateField()
+    date_recorded = models.DateField(blank=True, null=True)
     date = models.DateField()
     season_at = models.CharField(max_length=50)
 
@@ -42,14 +42,14 @@ class Specimen(TimeStampedModel):
 
     field_no = models.IntegerField(blank=False, null=False)
     description = models.CharField(max_length=300) # or break this up into the components by semicolon?
-    location = models.CharField(max_length=100, null=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         db_table = 'specimen'
         unique_together = ('record', 'field_no')
 
     def __unicode__(self):
-        return u'{}-{}'.format(self.record, self.specimen)
+        return u'{}-{}'.format(self.record, self.field_no)
 
     @property
     def amnh_catalog(self):
