@@ -1,17 +1,8 @@
 from django.db import models
+from django_extensions.db.models import TimeStampedModel
 
-class HasTimestampModel(models.Model):
-    """
-    Abstract model with timestamp fields
-    """
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True, editable=True)
-
-    class Meta:
-        abstract = True
-
-class Record(HasTimestampModel):
+class Record(TimeStampedModel):
     '''
     Represents a record or a page in the frick collection
     '''
@@ -34,7 +25,7 @@ class Record(HasTimestampModel):
         return u'{}-{}'.(self.frick_n_location, self.frick_n_box
 
 
-class Specimen(HasTimestampModel):
+class Specimen(TimeStampedModel):
     '''
     Represents a line on a record
     '''
