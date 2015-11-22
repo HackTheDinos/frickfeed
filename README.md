@@ -32,9 +32,13 @@ GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 Follow the prompts:
 
 > Username (leave blank to use 'gregthompson'): frick
+
 > Email address: 
+
 > Password: frickpassword
+
 > Password (again): frickpassword
+
 > Superuser created successfully.
 
 ## Run the frick out of our scripts
