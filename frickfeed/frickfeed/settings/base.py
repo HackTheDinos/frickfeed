@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     # Django packages
     'rest_framework',
     'django_extensions',
+    'django_filters'
 
     # Frick apps
     'apps.records',
@@ -77,6 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frickfeed.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.DjangoFilterBackend',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
