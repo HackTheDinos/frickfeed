@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     # Django packages
     'rest_framework',
     'django_extensions',
-    'django_filters'
+    'django_filters',
 
     # Frick apps
     'apps.records',
