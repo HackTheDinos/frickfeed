@@ -31,7 +31,10 @@ class RecordViewSet(ModelViewSet):
             obj, created = Record.objects.update_or_create(location=record_data['location'], box=record_data['box'], defaults=record_data)
 
             record_in_use = obj
+        except:
+            return Response('Adding record failed.', status=status.HTTP_400_BAD_REQUEST)
 
+        try:
             for specimen in data.get('specimens', []):
                 specimen_data = {
                     'amnh_catalog_a' : specimen['amnh_catalog_a'],
@@ -43,9 +46,10 @@ class RecordViewSet(ModelViewSet):
 
                 obj, created = Specimen.objects.update_or_create(record=record_in_use, amnh_catalog_a=specimen_data['amnh_catalog_a'], amnh_catalog_b=specimen_data['amnh_catalog_b'], defaults=specimen_data)
 
-            return Response('Hooray!', status=status.HTTP_200_OK)
         except:
-            return Response('Boo', status=status.HTTP_400_BAD_REQUEST)
+            return Response('Adding specimen failed', status=status.HTTP_400_BAD_REQUEST)
+
+        return Response('Hooray!', status=status.HTTP_200_OK)
 
 class SpecimenViewSet(ModelViewSet):
     queryset = Specimen.objects.all()
