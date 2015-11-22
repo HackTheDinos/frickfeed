@@ -15,7 +15,6 @@
 
 `export DJANGO_SETTINGS_MODULE=frickfeed.settings.base`
 
-
 ## Setup Postgres DB
 
 ```
@@ -26,6 +25,9 @@ CREATE USER frick WITH PASSWORD 'frickpass';
 GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 \q
 ```
+
+## Create a Django Admin
+`./manage.py createsuperuser`
 
 ## Run the frick out of our scripts
 `python manage.py migrate`
