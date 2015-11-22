@@ -1,24 +1,6 @@
-///////// CommentList
-// var CommentList = React.createClass({
-//   render: function() {
-//     debugger;
-//     var commentNodes = this.props.data.map(function(record) {
-//       return (
-//         <Comment season_at={record.season_at} key={record.id}>
-//           {record.collector_name}
-//         </Comment>
-//       );
-//     });
-//     return (
-//       <div className="commentList">
-//         {commentNodes}
-//       </div>
-//     );
-//   }
-// });
-
-///////// CommentForm
-var CommentForm = React.createClass({
+// TODO: post to specimens endpoint
+///////// Record
+var RecordForm = React.createClass({
   getInitialState: function() {
     // TODO: make resetState a constant
     var resetState = {
@@ -88,11 +70,11 @@ var CommentForm = React.createClass({
         shipping_point: ''
     }
     this.setState(resetState);
-    this.props.onCommentSubmit(this.state);
+    this.props.onRecordSubmit(this.state);
   },
   render: function() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form className="recordForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="First name"
@@ -147,23 +129,9 @@ var CommentForm = React.createClass({
   }
 });
 
-///////// CommentBox
-var CommentBox = React.createClass({
-  // loadCommentsFromServer: function() {
-  //   $.ajax({
-  //     url: this.props.url,
-  //     dataType: 'json',
-  //     cache: false,
-  //     success: function(data) {
-  //       debugger;
-  //       this.setState({data: data});
-  //     }.bind(this),
-  //     error: function(xhr, status, err) {
-  //       console.error(this.props.url, status, err.toString());
-  //     }.bind(this)
-  //   });
-  // },
-  handleCommentSubmit: function(record) {
+///////// RecordBox
+var RecordBox = React.createClass({
+  handleRecordSubmit: function(record) {
     // TODO: optimistically append record here
 
     $.ajax({
@@ -172,7 +140,7 @@ var CommentBox = React.createClass({
       type: 'POST',
       data: record,
       success: function(data) {
-        // TODO: handle successful comment post appropriately
+        // TODO: handle successful record post req appropriately
         debugger;
       }.bind(this),
       error: function(xhr, status, err) {
@@ -180,43 +148,17 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
-  // getInitialState: function() {
-  //   return {data: []};
-  // },
-  // componentDidMount: function() {
-  //   this.loadCommentsFromServer();
-  //   setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-  // },
   render: function() {
     return (
-      <div className="commentBox">
-        <h1>Comments</h1>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+      <div className="recordBox">
+        <RecordForm onRecordSubmit={this.handleRecordSubmit} />
       </div>
     );
   }
 });
 
-///////// Comment
-// var Comment = React.createClass({
-//   // rawMarkup: function() {
-//   //   var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
-//   //   return { __html: rawMarkup };
-//   // },
-
-//   render: function() {
-//     return (
-//       <div className="comment">
-//         <h2 className="commentAuthor">
-//           {this.props.season_at}
-//         </h2>
-//       </div>
-//     );
-//   }
-// });
-
-///////// render CommentBox
+///////// render RecordBox
 ReactDOM.render(
-  <CommentBox url="/v1/records/" />,
+  <RecordBox url="/v1/records/" />,
   document.getElementById('content')
 );
