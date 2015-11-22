@@ -15,7 +15,7 @@ class Record(TimeStampedModel):
     collector_name_last = models.CharField(max_length=50)
     date_recorded = models.DateField()
     date = models.DateField()
-    season_at = models.CharField()
+    season_at = models.CharField(max_length=50)
 
     class Meta:
         db_table = 'record'
@@ -40,7 +40,7 @@ class Specimen(TimeStampedModel):
 
     frick_n_specimen = models.IntegerField()
     description = models.CharField(max_length=200) # or break this up into the components by semicolon?
-    location = models.CharField(null=True)
+    location = models.CharField(max_length=50, null=True)
 
     class Meta:
         db_table = 'specimen'
