@@ -16,6 +16,9 @@ class RecordViewSet(ModelViewSet):
         return super(RecordViewSet, self).list(request)
 
     def create(self, request):
+
+        field_nos = []
+
         try:
             data = request.data
             record_data = {
@@ -31,6 +34,7 @@ class RecordViewSet(ModelViewSet):
             obj, created = Record.objects.update_or_create(location=record_data['location'], box=record_data['box'], defaults=record_data)
 
             record_in_use = obj
+
         except:
             return Response('Adding record failed.', status=status.HTTP_400_BAD_REQUEST)
 
@@ -46,8 +50,13 @@ class RecordViewSet(ModelViewSet):
 
                 obj, created = Specimen.objects.update_or_create(record=record_in_use, amnh_catalog_a=specimen_data['amnh_catalog_a'], amnh_catalog_b=specimen_data['amnh_catalog_b'], defaults=specimen_data)
 
+                field_nos.append(specimen['field_no'])
+
         except:
             return Response('Adding specimen failed', status=status.HTTP_400_BAD_REQUEST)
+
+        specimens_on_record = Specimen.objects.filter(record=record_in_use)
+        specimens_on_record.exclude(field_no__in=field_nos).delete()
 
         return Response('Hooray!', status=status.HTTP_200_OK)
 
