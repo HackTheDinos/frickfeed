@@ -1,0 +1,104 @@
+[
+{
+  "fields": {
+    "box": 5,
+    "date_recorded": "1936-08-25",
+    "created": "2015-11-22T05:01:15.439Z",
+    "modified": "2015-11-22T05:01:15.439Z",
+    "season_at": "Montana",
+    "location": "A",
+    "date": "1936-08-21",
+    "collector_name_first": "Chas",
+    "shipping_point": "Helena, Montana",
+    "collector_name_last": "Falkenbach"
+  },
+  "model": "records.record",
+  "pk": 1
+},
+{
+  "fields": {
+    "box": 349,
+    "date_recorded": null,
+    "created": "2015-11-22T05:16:37.825Z",
+    "modified": "2015-11-22T05:16:37.825Z",
+    "season_at": "Sioux o. Area",
+    "location": "B",
+    "date": "1941-09-15",
+    "collector_name_first": "Skinner",
+    "shipping_point": "Gering Newr",
+    "collector_name_last": "M.F."
+  },
+  "model": "records.record",
+  "pk": 2
+},
+{
+  "fields": {
+    "description": "Oreodont (large) partial skill & jaws",
+    "created": "2015-11-22T05:06:16.358Z",
+    "modified": "2015-11-22T05:06:16.358Z",
+    "record": 1,
+    "field_no": 83,
+    "location": "",
+    "amnh_catalog_b": "42328",
+    "amnh_catalog_a": "FAM"
+  },
+  "model": "records.specimen",
+  "pk": 6
+},
+{
+  "fields": {
+    "description": "Oreodont partial skull (poor)",
+    "created": "2015-11-22T05:09:44.627Z",
+    "modified": "2015-11-22T05:09:44.627Z",
+    "record": 1,
+    "field_no": 84,
+    "location": "",
+    "amnh_catalog_b": "42328",
+    "amnh_catalog_a": "FAM"
+  },
+  "model": "records.specimen",
+  "pk": 7
+},
+{
+  "fields": {
+    "description": "Oreodont partial ramus etc. limb frags",
+    "created": "2015-11-22T05:10:13.201Z",
+    "modified": "2015-11-22T05:10:13.201Z",
+    "record": 1,
+    "field_no": 85,
+    "location": "",
+    "amnh_catalog_b": "42330",
+    "amnh_catalog_a": "FAM"
+  },
+  "model": "records.specimen",
+  "pk": 8
+},
+{
+  "fields": {
+    "description": "Carnivore right",
+    "created": "2015-11-22T05:19:41.503Z",
+    "modified": "2015-11-22T05:19:41.503Z",
+    "record": 2,
+    "field_no": 19035,
+    "location": "",
+    "amnh_catalog_b": "61115",
+    "amnh_catalog_a": "FAM"
+  },
+  "model": "records.specimen",
+  "pk": 9
+},
+{
+  "fields": {
+    "description": "Amphicyor Ranus Left",
+    "created": "2015-11-22T05:20:39.375Z",
+    "modified": "2015-11-22T05:20:39.375Z",
+    "record": 2,
+    "field_no": 19036,
+    "location": "",
+    "amnh_catalog_b": "54352",
+    "amnh_catalog_a": "FAM"
+  },
+  "model": "records.specimen",
+  "pk": 10
+}
+]
