@@ -29,4 +29,5 @@ GRANT ALL PRIVILEGES ON DATABASE  frickdb TO frick;
 
 ## Run the frick out of our scripts
 `python manage.py migrate`
+
 `./manage.py runserver`
