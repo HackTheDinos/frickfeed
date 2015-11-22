@@ -1,5 +1,7 @@
 # FrickFeed
 
+Presentation: https://docs.google.com/presentation/d/1J7i5hto65hBXedNJehDo9axlp2BxMuU2CFaOpW1bFJE
+
 ## Dependencies
 * postgresql 
 * python2.7.*
