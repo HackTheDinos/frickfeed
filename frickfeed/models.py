@@ -10,7 +10,7 @@ class Record(TimeStampedModel):
     frick_n_location = models.CharField(max_length=10, null=False, blank=False)
     frick_n_box = models.IntegerField(null=False, blank=False)
 
-    shipping_point = models.CharField() # or break into city, state
+    shipping_point = models.CharField(max_length=50)
     collector_name_first = models.CharField(max_length=50)
     collector_name_last = models.CharField(max_length=50)
     date_recorded = models.DateField()
