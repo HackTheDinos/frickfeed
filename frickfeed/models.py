@@ -42,7 +42,7 @@ class Specimen(TimeStampedModel):
 
     class Meta:
         db_table = 'specimen'
-        unique_together = ('record', 'frick_n_specimen')
+        unique_together = ('record', 'field_no')
 
     def __unicode__(self):
         return u'{}-{}'.format(self.record, self.specimen)
