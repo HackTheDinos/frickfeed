@@ -1,52 +1,145 @@
 ///////// CommentList
-var CommentList = React.createClass({
-  render: function() {
-    debugger;
-    var commentNodes = this.props.data.map(function(record) {
-      return (
-        <Comment season_at={record.season_at} key={record.id}>
-          {record.collector_name}
-        </Comment>
-      );
-    });
-    return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
-    );
-  }
-});
+// var CommentList = React.createClass({
+//   render: function() {
+//     debugger;
+//     var commentNodes = this.props.data.map(function(record) {
+//       return (
+//         <Comment season_at={record.season_at} key={record.id}>
+//           {record.collector_name}
+//         </Comment>
+//       );
+//     });
+//     return (
+//       <div className="commentList">
+//         {commentNodes}
+//       </div>
+//     );
+//   }
+// });
 
 ///////// CommentForm
 var CommentForm = React.createClass({
   getInitialState: function() {
-    return {season_at: ''};
+    // TODO: make resetState a constant
+    var resetState = {
+        collector_name_first: '',
+        collector_name_last: '',
+        location: '',
+        box: '',
+        date_recorded: '',
+        date: '',
+        season_at: '',
+        shipping_point: ''
+    }
+    return resetState;
   },
-  handleAuthorChange: function(e) {
-    this.setState({author: e.target.value});
+  handleFirstNameChange: function(e) {
+    this.setState({collector_name_first: e.target.value});
+  },
+  handleLastNameChange: function(e) {
+    this.setState({collector_name_last: e.target.value});
+  },
+  handleLocationChange: function(e) {
+    this.setState({location: e.target.value});
+  },
+  handleBoxChange: function(e) {
+    this.setState({box: e.target.value});
+  },
+  handleShippingPointChange: function(e) {
+    this.setState({shipping_point: e.target.value});
+  },
+  handleDateRecordedChange: function(e) {
+    this.setState({date_recorded: e.target.value});
+  },
+  handleDateChange: function(e) {
+    this.setState({date: e.target.value});
+  },
+  handleSeasonAtChange: function(e) {
+    this.setState({season_at: e.target.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    var author = this.state.author.trim();
-    // TODO: add more vars
-    // var text = this.state.text.trim();
-    // var text = this.state.text.trim();
+    // validate fields are filled
+    var collector_name_first = this.state.collector_name_first.trim();
+    var collector_name_last = this.state.collector_name_last.trim();
+    var location = this.state.location.trim();
+    var box = this.state.box.trim();
+    var date_recorded = this.state.date_recorded.trim();
+    var date = this.state.date.trim();
+    var season_at = this.state.season_at.trim();
+    var shipping_point = this.state.shipping_point.trim();
 
-    if (!author) {
+    // TODO: validate by iterating through these and calling a validate function
+    if (!collector_name_first || !collector_name_last || !location || !box || !date_recorded || !date || !season_at || !shipping_point ) {
+      debugger;
+      // TODO: handle validation appropriately
       return;
     }
-    // TODO: send request to the server
-    this.setState({author: ''});
-    this.props.onCommentSubmit({author: author});
+
+    // reset input fields on submit
+    var resetState = {
+        collector_name_first: '',
+        collector_name_last: '',
+        location: '',
+        box: '',
+        date_recorded: '',
+        date: '',
+        season_at: '',
+        shipping_point: ''
+    }
+    this.setState(resetState);
+    this.props.onCommentSubmit(this.state);
   },
   render: function() {
     return (
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Your name"
-          value={this.state.author}
-          onChange={this.handleAuthorChange}
+          placeholder="First name"
+          value={this.state.collector_name_first}
+          onChange={this.handleFirstNameChange}
+        />
+        <input
+          type="text"
+          placeholder="Last name"
+          value={this.state.collector_name_last}
+          onChange={this.handleLastNameChange}
+        />
+        <input
+          type="text"
+          placeholder="Location"
+          value={this.state.location}
+          onChange={this.handleLocationChange}
+        />
+        <input
+          type="number"
+          placeholder="Box no."
+          value={this.state.box}
+          onChange={this.handleBoxChange}
+        />
+        <input
+          type="text"
+          placeholder="Shipping point"
+          value={this.state.shipping_point}
+          onChange={this.handleShippingPointChange}
+        />
+        <input
+          type="date"
+          placeholder="Date recorded"
+          value={this.state.date_recorded}
+          onChange={this.handleDateRecordedChange}
+        />
+        <input
+          type="date"
+          placeholder="Date"
+          value={this.state.date}
+          onChange={this.handleDateChange}
+        />
+        <input
+          type="string"
+          placeholder="Season at"
+          value={this.state.season_at}
+          onChange={this.handleSeasonAtChange}
         />
         <input type="submit" value="Post" />
       </form>
@@ -56,37 +149,22 @@ var CommentForm = React.createClass({
 
 ///////// CommentBox
 var CommentBox = React.createClass({
-  loadCommentsFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
+  // loadCommentsFromServer: function() {
+  //   $.ajax({
+  //     url: this.props.url,
+  //     dataType: 'json',
+  //     cache: false,
+  //     success: function(data) {
+  //       debugger;
+  //       this.setState({data: data});
+  //     }.bind(this),
+  //     error: function(xhr, status, err) {
+  //       console.error(this.props.url, status, err.toString());
+  //     }.bind(this)
+  //   });
+  // },
   handleCommentSubmit: function(record) {
-    record.location = "test";
-    record.box = Math.floor(Math.random() * 100);
-    record.shipping_point = "NY";
-    record.date_recorded = "2015-01-01";
-    record.date = "1970-01-01";
-    record.season_at = "salt n peppaaaa";
-    record.collector_name_first = "bob";
-    record.collector_name_last = "loblaw";
-
-    // var comments = this.state.data;
-    // // Optimistically set an id on the new comment. It will be replaced by an
-    // // id generated by the server. In a production application you would likely
-    // // not use Date.now() for this and would have a more robust system in place.
-    // data.id = Date.now();
-    // debugger;
-    // var newComments = comments.concat([data]);
-    // this.setState({data: newComments});
+    // TODO: optimistically append record here
 
     $.ajax({
       url: this.props.url,
@@ -94,27 +172,25 @@ var CommentBox = React.createClass({
       type: 'POST',
       data: record,
       success: function(data) {
-        this.state.data.push(data)
-        this.setState({author: ''}); // clear input field
+        // TODO: handle successful comment post appropriately
+        debugger;
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentDidMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-  },
+  // getInitialState: function() {
+  //   return {data: []};
+  // },
+  // componentDidMount: function() {
+  //   this.loadCommentsFromServer();
+  //   setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  // },
   render: function() {
-    debugger;
     return (
       <div className="commentBox">
         <h1>Comments</h1>
-        <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
@@ -122,31 +198,25 @@ var CommentBox = React.createClass({
 });
 
 ///////// Comment
-var Comment = React.createClass({
-  // rawMarkup: function() {
-  //   var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
-  //   return { __html: rawMarkup };
-  // },
+// var Comment = React.createClass({
+//   // rawMarkup: function() {
+//   //   var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+//   //   return { __html: rawMarkup };
+//   // },
 
-  render: function() {
-    return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          {this.props.season_at}
-        </h2>
-      </div>
-    );
-  }
-});
-
-// Dummy data
-var data = [
-  {id: 1, author: "Pete Hunt", text: "This is one comment"},
-  {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-];
+//   render: function() {
+//     return (
+//       <div className="comment">
+//         <h2 className="commentAuthor">
+//           {this.props.season_at}
+//         </h2>
+//       </div>
+//     );
+//   }
+// });
 
 ///////// render CommentBox
 ReactDOM.render(
-  <CommentBox url="/v1/records/" pollInterval={2000} />,
+  <CommentBox url="/v1/records/" />,
   document.getElementById('content')
 );
