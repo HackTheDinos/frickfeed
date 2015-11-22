@@ -1,11 +1,14 @@
 {% load staticfiles %}
+<!doctype html>
 <html>
   <head>
     <title>{% block title %}{% endblock %}| FrickFeed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="static/js/main.js"></script>
-    </head>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
