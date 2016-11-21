@@ -1,0 +1,71 @@
+<style>
+
+  .record-card {
+    display: block;
+    width: 90%;
+    margin: 20px auto 30px;
+  }
+
+  .record-card__details {
+    margin: -20px 0 0;
+  }
+
+  .title-text {
+    color: #3f51b5 !important;
+  }
+
+  .filters {
+    padding: 15px 0;
+  }
+
+  .filters-title {
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .filters__filter {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    color: #999;
+    padding: 5px 0;
+  }
+
+</style>
+
+<script>
+  $(document).ready(function() {
+    $.getJSON( "http://127.0.0.1:8000/v1/records/", function( data ) {
+      console.log(data);
+      var items = [];
+
+      $.each( data, function(key) {
+        console.log(key);
+        var record = data[key];
+        console.log(record);
+        items.push('<paper-card class="record-card" heading="' + record['location'] + '-' + record['box'] + '"><div class="card-content"><ul class="record-card__details"><li>Collector: ' + record['collector_name'] + '</li><li>Date: ' + record['date'] + '</li><li>Season: ' + record['season_at'] + '</li><li>Shipping From: ' + record['shipping_point'] + '</li></ul></div><div class="card-actions" style="padding: 10px;"><paper-button style="margin-right: 25px;"><iron-icon style="position: relative; bottom: 2px; height: 18px; width: 18px; padding-right: 5px;" icon="description"></iron-icon>View</paper-button><paper-button><iron-icon style="position: relative; bottom: 2px; height: 18px; width: 18px; padding-right: 4px;" icon="create"></iron-icon>Edit</paper-button></div></paper-card>');
+      });
+
+      $( "<div></div>", {
+        "class": "record",
+        html: items.join( "" )
+      }).appendTo( "#records" );
+    });
+
+  });
+</script>
+
+<paper-input label="Search the Frick Collection" type="search"
+    placeholder="Search Terms" autosave="test" results="5">
+</paper-input>
+
+<div class="filters">
+  <h1 class="filters-title">Filters</h1>
+  <div class="filters__filter">Loc: A <iron-icon style="color: #999; position: relative; bottom: 2px; height: 12px; width: 12px; padding-right: 5px;" icon="remove-circle"></iron-icon></div>
+  <div class="filters__filter">Season: Montana <iron-icon style="color: #999; position: relative; bottom: 2px; height: 12px; width: 12px; padding-right: 5px;" icon="remove-circle"></iron-icon></div>
+</div>
+
+<h2 class="page-title">Results</h2>
+
+<div id="records"></div>

@@ -1,0 +1,38 @@
+<style>
+  #transcribe {
+    background: rgba(63, 81, 181, 0.05);
+    padding: 10px;
+    position: relative;
+  }
+
+  .transcribe-header {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .focus {
+    background: ;
+    border: 2px solid;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+
+</style>
+
+<h2 class="page-title">Transcribe Record</h2>
+
+<div id="shippingRecord" class="shippingRecord"></div>
+
+<!-- <div class="focus"></div> -->
+
+<div id="transcribe">
+
+  {% include 'transcribe_instructions.html' %}
+
+</div>
+
+<script src="static/js/image_viewer.js"></script>
